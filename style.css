@@ -1002,4 +1002,63 @@ body {
   .social-icons {
     gap: 16px;
   }
+}
+
+/* 헤더 오른쪽 버튼들을 감싸는 컨테이너 */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 헤더 상단 챗봇 버튼 */
+.header-chatbot-btn {
+  background: linear-gradient(90deg, #0a5dff 0%, #00c3ff 100%);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.header-chatbot-btn:hover {
+  background: linear-gradient(90deg, #00c3ff 0%, #0a5dff 100%);
+  transform: scale(1.05);
+}
+
+/* 반응형: 모바일에서 헤더 버튼들 조정 */
+@media (max-width: 600px) {
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 8px;
+  }
+  .main-nav {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .brand-name {
+    margin-left: 0;
+    margin-top: 4px;
+    text-align: center;
+  }
+  .left-group {
+    justify-content: center;
+  }
+  .header-buttons {
+    justify-content: center;
+    gap: 8px;
+  }
+  .header-chatbot-btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 } 
