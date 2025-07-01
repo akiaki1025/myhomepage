@@ -1,0 +1,1005 @@
+/* 넥슨 폰트를 사용해요 (여기서는 Nanum Gothic으로 예시) */
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  margin: 0;
+  background: #fff; /* 배경색은 흰색이에요 */
+}
+
+/* 헤더 전체를 꾸며요 */
+.main-header {
+  display: flex; /* 가로로 나란히 배치해요 */
+  align-items: center; /* 세로 가운데로 맞춰요 */
+  justify-content: space-between; /* 양쪽 끝과 가운데로 배치해요 */
+  gap: 10px; /* 사이사이 간격을 10px로 해요 */
+  padding: 16px 32px; /* 위아래, 좌우 여백을 줘요 */
+  background: #fff; /* 배경색은 흰색이에요 */
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 320px;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px; /* 로고 크기를 정해요 */
+  width: auto;
+  display: block;
+}
+
+.brand-name {
+  font-size: 1.3rem; /* 브랜드 이름 글자 크기 */
+  font-weight: bold;
+}
+
+.main-nav {
+  display: flex; /* 메뉴도 가로로 나란히 */
+  gap: 10px; /* 메뉴 사이 간격 */
+  justify-content: center; /* 메뉴를 가운데로 */
+  flex: 1;
+}
+
+.main-nav a {
+  text-decoration: none; /* 밑줄 없애기 */
+  color: #222; /* 글자색 */
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.main-nav a:hover {
+  background: #f0f0f0; /* 마우스를 올리면 배경색 */
+}
+
+.login-btn {
+  background: #fff; /* 흰색 바탕 */
+  color: #222; /* 글자색 */
+  border: 2px solid #222; /* 검은색 테두리 */
+  border-radius: 25px; /* 둥글게 만들어요 */
+  padding: 8px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-btn:hover {
+  background: #222; /* 마우스를 올리면 배경색이 검은색 */
+  color: #fff; /* 글자색이 흰색 */
+}
+
+/* 반응형: 화면이 작아지면(모바일) 헤더가 세로로 쌓여요 */
+@media (max-width: 600px) {
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 8px;
+  }
+  .main-nav {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .brand-name {
+    margin-left: 0;
+    margin-top: 4px;
+    text-align: center;
+  }
+  .left-group {
+    justify-content: center;
+  }
+}
+
+/* 히어로(캐러셀) 파트 전체를 꾸며요 */
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 화면 전체를 가득 채워요 */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* 슬라이드들을 감싸는 부분 */
+.slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* 각 슬라이드(이미지+텍스트) */
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover; /* 이미지를 좌우로 꽉 채워요 (풀화면) */
+  background-position: center;
+  display: none;
+  position: absolute;
+  top: 0; left: 0;
+  transition: opacity 0.5s;
+}
+.slide.active {
+  display: block; /* 활성화된 슬라이드만 보여요 */
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 슬라이드 안의 텍스트와 버튼을 가운데에 놓아요 */
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 8px #222, 0 0 10px #000; /* 글자에 그림자 */
+  width: 90%;
+  max-width: 600px;
+}
+
+.hero-brand {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.slide-content h2 {
+  font-size: 1.5rem;
+  margin: 8px 0 12px 0;
+}
+.slide-content p {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
+
+/* 구매하기 버튼을 예쁘게 만들어요 */
+.buy-btn {
+  display: inline-block;
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-shadow: none; /* 버튼 글씨는 그림자 없이 깔끔하게 보여요 */
+}
+.buy-btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* 좌우 화살표 버튼을 꾸며요 */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  z-index: 2;
+  box-shadow: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-arrow {
+  left: 16px;
+}
+.right-arrow {
+  right: 16px;
+}
+.arrow:hover {
+  opacity: 1;
+  background: #eee;
+}
+
+/* 반응형: 모바일에서 높이와 폰트 크기를 줄여요 */
+@media (max-width: 600px) {
+  .hero-carousel {
+    height: 100vh; /* 모바일도 화면 전체를 가득 채워요 */
+    margin-bottom: 16px;
+  }
+  .slide-content {
+    max-width: 95vw;
+    font-size: 0.9rem;
+  }
+  .hero-brand {
+    font-size: 1.1rem;
+  }
+  .arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.3rem;
+  }
+}
+
+/* 제품 섹션 전체를 감싸요 */
+.product-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 48px auto;
+  padding: 24px 12px;
+  box-sizing: border-box;
+}
+
+/* 매장 대표 이미지를 크게 보여줘요 */
+.shop-image {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 0 auto 32px auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+
+/* 큰 제목을 검은색, 크게 보여줘요 */
+.product-title {
+  font-size: 2.3rem;
+  color: #111;
+  text-align: center;
+  margin-bottom: 36px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* 2x2 제품 그리드 */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 36px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 각 제품 카드 */
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.13);
+  padding: 28px 20px 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.5px solid #f2f2f2;
+}
+.product-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* 제품 이미지 */
+.product-img {
+  width: 100%;
+  max-width: 210px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  margin-left: 3px;
+  margin-right: 3px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  background: #f8f8f8;
+}
+
+/* 제품 설명 */
+.product-desc {
+  width: 100%;
+  text-align: left;
+  font-size: 1.08rem;
+  color: #232323;
+  margin-top: 4px;
+  position: relative;
+  line-height: 1.7;
+}
+.product-desc strong {
+  color: #0a5dff;
+  font-weight: bold;
+}
+
+.desc-short, .desc-full {
+  margin-bottom: 8px;
+}
+
+/* 더보기 버튼 */
+.more-btn {
+  display: block;
+  margin: 16px auto 0 auto;
+  background: linear-gradient(90deg, #0a5dff 0%, #00c3ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(10,93,255,0.08);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  letter-spacing: 0.5px;
+}
+.more-btn:hover {
+  background: linear-gradient(90deg, #00c3ff 0%, #0a5dff 100%);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+/* 반응형: 모바일에서는 1열로 보여줘요 */
+@media (max-width: 800px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 28px 0;
+  }
+  .shop-image {
+    max-width: 100vw;
+  }
+  .product-card {
+    padding: 18px 8px 24px 8px;
+  }
+  .product-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .product-title {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+  .product-card {
+    padding: 10px 2px 16px 2px;
+  }
+  .product-img {
+    max-width: 90vw;
+  }
+  .more-btn {
+    font-size: 0.98rem;
+    padding: 8px 18px;
+  }
+}
+
+/* 리뷰(고객후기) 섹션 전체를 감싸요 */
+.review-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 48px auto;
+  padding: 24px 12px;
+  box-sizing: border-box;
+}
+
+.review-title {
+  font-size: 2rem;
+  color: #0a5dff;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* 3x2 그리드로 리뷰를 배치해요 */
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 32px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 각 리뷰 카드 */
+.review-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  padding: 24px 18px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1.5px solid #f2f2f2;
+}
+.review-card:hover {
+  box-shadow: 0 10px 32px rgba(0,0,0,0.16);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.review-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0a5dff;
+  margin-bottom: 8px;
+}
+
+.review-stars {
+  color: #FFD600;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 1.05rem;
+  color: #232323;
+  text-align: center;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+@media (max-width: 900px) {
+  .review-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 24px 12px;
+  }
+}
+@media (max-width: 600px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 18px 0;
+  }
+  .review-title {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+  .review-card {
+    padding: 14px 4px 14px 4px;
+  }
+}
+
+/* CEO 인사말 섹션 전체를 감싸요 */
+.greeting-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 48px auto;
+  padding: 24px 12px;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  border-radius: 20px;
+  margin-top: 32px;
+}
+
+.greeting-title {
+  font-size: 2rem;
+  color: #0a5dff;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* CEO 사진과 인사말을 나란히 배치해요 */
+.greeting-content {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 0 auto 32px auto;
+}
+
+/* CEO 사진 영역 */
+.ceo-photo {
+  flex: 0 0 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.ceo-image {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  object-fit: cover;
+  aspect-ratio: 3/4;
+}
+
+/* 인사말 글상자 영역 */
+.greeting-text {
+  flex: 1;
+  font-size: 1.08rem;
+  color: #232323;
+  line-height: 1.8;
+  position: relative;
+}
+
+.greeting-short, .greeting-full {
+  margin-bottom: 16px;
+}
+
+/* 더보기/닫기 버튼 */
+.greeting-btn {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #0a5dff 0%, #00c3ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(10,93,255,0.15);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  letter-spacing: 0.5px;
+}
+.greeting-btn:hover {
+  background: linear-gradient(90deg, #00c3ff 0%, #0a5dff 100%);
+  transform: scale(1.05);
+}
+
+/* 고객센터 연락처를 눈에 띄게 보여줘요 */
+.contact-info {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 2px solid #0a5dff;
+  margin-top: 24px;
+}
+
+.contact-info p {
+  font-size: 1.2rem;
+  color: #0a5dff;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.phone-numbers {
+  font-size: 1.4rem;
+  color: #ff4757;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* 반응형: 모바일에서는 세로로 배치해요 */
+@media (max-width: 768px) {
+  .greeting-content {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .ceo-photo {
+    flex: none;
+  }
+  .ceo-image {
+    max-width: 180px;
+  }
+  .greeting-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .greeting-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  .contact-info {
+    padding: 16px;
+  }
+  .contact-info p {
+    font-size: 1rem;
+  }
+  .phone-numbers {
+    font-size: 1.1rem;
+  }
+}
+
+/* Q&A 섹션 전체를 감싸요 */
+.qa-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 48px auto;
+  padding: 24px 12px;
+  box-sizing: border-box;
+}
+
+.qa-title {
+  font-size: 2rem;
+  color: #0a5dff;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* 질문하기 폼을 예쁘게 꾸며요 */
+.question-form {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  padding: 28px 24px;
+  margin-bottom: 32px;
+  border: 1.5px solid #f2f2f2;
+}
+
+.question-form h3 {
+  font-size: 1.3rem;
+  color: #0a5dff;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+/* 질문 제목 입력칸 */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #0a5dff;
+}
+
+/* 질문 내용 입력칸 */
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.2s;
+}
+.form-textarea:focus {
+  outline: none;
+  border-color: #0a5dff;
+}
+
+/* 질문 보내기 버튼 */
+.submit-btn {
+  background: linear-gradient(90deg, #0a5dff 0%, #00c3ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(10,93,255,0.15);
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.5px;
+}
+.submit-btn:hover {
+  background: linear-gradient(90deg, #00c3ff 0%, #0a5dff 100%);
+  transform: scale(1.05);
+}
+
+/* 질문 접수 메시지 */
+.question-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* FAQ 자주 묻는 질문들 */
+.faq-section {
+  background: #f8f9fa;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.faq-section h3 {
+  font-size: 1.3rem;
+  color: #0a5dff;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 각 FAQ 항목 */
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* FAQ 질문 부분 (클릭할 수 있어요) */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #232323;
+  transition: background 0.2s;
+}
+.faq-question:hover {
+  background: #f8f9fa;
+}
+
+/* + 또는 - 표시 */
+.faq-toggle {
+  font-size: 1.2rem;
+  color: #0a5dff;
+  font-weight: bold;
+}
+
+/* FAQ 답변 부분 */
+.faq-answer {
+  padding: 0 20px 16px 20px;
+  color: #666;
+  line-height: 1.6;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 반응형: 모바일에서 폰트와 패딩 조정 */
+@media (max-width: 768px) {
+  .question-form {
+    padding: 18px 12px;
+  }
+  .qa-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  .faq-section {
+    padding: 16px;
+  }
+  .faq-question {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  .faq-answer {
+    padding: 0 16px 12px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 우하단 고정 챗봇 버튼을 만들어요 */
+.chatbot-button {
+  position: fixed; /* 화면에서 움직이지 않게 고정해요 */
+  bottom: 24px; /* 화면 아래쪽에서 24px 떨어진 곳에 위치해요 */
+  right: 24px; /* 화면 오른쪽에서 24px 떨어진 곳에 위치해요 */
+  z-index: 1000; /* 다른 요소들보다 위에 보이게 해요 */
+}
+
+.chatbot-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #0a5dff 0%, #00c3ff 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 25px;
+  box-shadow: 0 4px 16px rgba(10,93,255,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.chatbot-link:hover {
+  transform: translateY(-2px) scale(1.05); /* 마우스를 올리면 살짝 위로 올라가고 커져요 */
+  box-shadow: 0 6px 24px rgba(10,93,255,0.35);
+  background: linear-gradient(90deg, #00c3ff 0%, #0a5dff 100%);
+}
+
+.chatbot-icon {
+  font-size: 1.2rem;
+  animation: bounce 2s infinite; /* 챗봇 아이콘이 계속 통통 튀어요 */
+}
+
+.chatbot-text {
+  letter-spacing: 0.5px;
+}
+
+/* 챗봇 아이콘이 통통 튀는 애니메이션이에요 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* 반응형: 모바일에서는 조금 더 작게 만들어요 */
+@media (max-width: 768px) {
+  .chatbot-button {
+    bottom: 16px;
+    right: 16px;
+  }
+  .chatbot-link {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  .chatbot-icon {
+    font-size: 1rem;
+  }
+}
+
+/* 푸터 섹션 전체를 꾸며요 */
+.footer-section {
+  background: #2c3e50; /* 어두운 배경색으로 푸터를 구분해요 */
+  color: #ecf0f1;
+  padding: 40px 0 20px 0;
+  margin-top: 48px;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* 푸터 상단: 이용약관, 개인정보처리방침 */
+.footer-top {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #34495e;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #3498db; /* 마우스를 올리면 파란색으로 바뀌어요 */
+}
+
+.footer-divider {
+  color: #7f8c8d;
+  font-weight: bold;
+}
+
+/* 푸터 중간: 회사 정보와 SNS */
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+/* 회사 정보들 */
+.company-info {
+  flex: 1;
+}
+
+.info-row {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #bdc3c7;
+  line-height: 1.4;
+}
+
+/* SNS 링크들 */
+.social-links {
+  flex: 0 0 200px;
+  text-align: center;
+}
+
+.social-links h4 {
+  font-size: 1.1rem;
+  color: #ecf0f1;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* 각 SNS 아이콘 */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.social-link.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.social-link.facebook {
+  background: #4267B2;
+}
+.social-link.youtube {
+  background: #FF0000;
+}
+.social-link.blog {
+  background: #03C75A;
+}
+
+.social-link:hover {
+  transform: scale(1.1) translateY(-2px); /* 마우스를 올리면 커지고 위로 올라가요 */
+}
+
+/* 푸터 하단: COPYRIGHT */
+.footer-bottom {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #34495e;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #95a5a6;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* 반응형: 모바일에서는 세로로 배치해요 */
+@media (max-width: 768px) {
+  .footer-middle {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .social-links {
+    flex: none;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-divider {
+    display: none; /* 모바일에서는 | 표시를 숨겨요 */
+  }
+  .info-row {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .social-icons {
+    gap: 16px;
+  }
+} 
